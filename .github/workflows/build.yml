@@ -24,8 +24,8 @@ jobs:
           sudo apt install build-essential cmake libncurses5-dev
           mkdir build && cd build
           wget ${{ github.event.inputs.sdk_url }}
-          tar -Jxvf $(ls)
-          rm *.xz
+          tar --zstd -xf $(ls)
+          rm *.zst
           echo "::set-output name=release_tag_p1::$(ls)"
           mv $(ls) openwrt
           mkdir openwrt/package/scutclient
