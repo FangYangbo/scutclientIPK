@@ -42,4 +42,8 @@ jobs:
           tag_name: ${{ steps.build.outputs.release_tag_p1 }}--${{ steps.build.outputs.release_tag_p2 }}
           files: build/*.ipk
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}- name: Upload IPK
+        uses: actions/upload-artifact@v4
+        with:
+          name: scutclient-ipk
+          path: build/*.ipk
